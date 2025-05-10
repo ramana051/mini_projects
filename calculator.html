@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #EBF7E3;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #9bd7707e;
+
+    }
+    #calculator {
+      display: inline-block;
+      background-color: #9BD770;
+      border: 3px solid #375F1B;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    input[type="text"] {
+      width: 360px;
+      height: 50px;
+      font-size: 24px;
+      text-align: right;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      padding: 0 10px;
+      background-color: #EBF7E3;
+      color: #1B3409;
+    }
+    .btn {
+      width: 70px;
+      height: 60px;
+      font-size: 20px;
+      margin: 6px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      background-color: #66B032;
+      transition: 0.2s ease;
+    }
+    .btn:hover {
+      background-color: #375F1B;
+    }
+    .btn:active {
+      transform: scale(0.95);
+    }
+    h2 {
+      color: #1B3409;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <h2>Basic Calculator</h2>
+    <input type="text" id="display" disabled />
+    <br />
+    <button class="btn" onclick="press('7')">7</button>
+    <button class="btn" onclick="press('8')">8</button>
+    <button class="btn" onclick="press('9')">9</button>
+    <button class="btn" onclick="press('/')">÷</button>
+    <br />
+    <button class="btn" onclick="press('4')">4</button>
+    <button class="btn" onclick="press('5')">5</button>
+    <button class="btn" onclick="press('6')">6</button>
+    <button class="btn" onclick="press('*')">×</button>
+    <br />
+    <button class="btn" onclick="press('1')">1</button>
+    <button class="btn" onclick="press('2')">2</button>
+    <button class="btn" onclick="press('3')">3</button>
+    <button class="btn" onclick="press('-')">−</button>
+    <br />
+    <button class="btn" onclick="press('0')">0</button>
+    <button class="btn" onclick="press('.')">.</button>
+    <button class="btn" onclick="calculate()">=</button>
+    <button class="btn" onclick="press('+')">+</button>
+    <br />
+    <button class="btn" onclick="clearDisplay()">C</button>
+  </div>
+
+  <script>
+    function press(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function calculate() {
+      try {
+        const result = eval(document.getElementById('display').value);
+        document.getElementById('display').value = result;
+      } catch {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+  </script>
+</body>
+</html>
